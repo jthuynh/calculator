@@ -1,0 +1,34 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: vh;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    height: 600px;
+    width: 400px;
+}
+
+.container > div {
+    /* background-color: lavender; */
+    border: 1px solid #D3D3D3;
+}
+
+.display-area {
+    background-color: orange;
+}
+
+.clear-section {
+    background-color: green;
+}
+
+.operations-section {
+    background-color: purple;
+}
+
+.numbers-section {
+    background-color: lightblue;
+}

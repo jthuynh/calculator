@@ -1,20 +1,4 @@
-// function add (first, second) {
-//     return first + second;
-// }
-
-// function subtract (first, second) {
-//     return first - second;
-// }
-
-// function multiply (first, second) {
-//     return first * second;
-// }
-
-// function divide (first, second) {
-//     return first / second;
-// }
-
-// TODO: POSSIBLY PUT ABOVE INTO A SWITCH STATEMENT?
+const container = document.querySelector('.container');
 
 function operate (operator, first, second) {
     switch(operator) {
@@ -28,6 +12,14 @@ function operate (operator, first, second) {
             return (second === 0) ? 'Nah. That ain\'t it, chief' : first / second;
         default :
             throw 'Error: no operator selected';
-
     }
 }
+
+function setupDivs () {
+    const display = document.querySelector('.display-area');
+    const clear = document.querySelector('.clear-section');
+    const operations = document.querySelector('.operations-section');
+    const numbers = document.querySelector('.numbers-section');
+}
+
+setupDivs();
