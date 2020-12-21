@@ -17,9 +17,12 @@ function operate (operator, first, second) {
 
 function setupDivs () {
     const display = document.querySelector('.display-area');
-    const clear = document.querySelector('.clear-section');
-    const operations = document.querySelector('.operations-section');
-    const numbers = document.querySelector('.numbers-section');
+    const clear = document.querySelector('.clear-divs');
+    const operations = document.querySelector('.operations-divs');
+    const numbers = document.querySelector('.numbers-divs');
+    // TODO: Set up the calculator grids 
+    // using the grid lines
+    
 }
 
 setupDivs();

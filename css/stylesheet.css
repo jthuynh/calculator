@@ -4,6 +4,8 @@
     justify-content: center;
     height: vh;
 }
+sup {font-size:xx-small; vertical-align:super;}
+
 .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -19,16 +21,25 @@
 
 .display-area {
     background-color: orange;
+    grid-area: 1 / 1 / 2 / 5;
 }
 
-.clear-section {
+.clear-divs {
     background-color: green;
+    grid-area: 2 / 1 / 2 / 4;
 }
 
-.operations-section {
+.operations-divs {
     background-color: purple;
+    grid-area: 2 / 4 / 7 / 5;
 }
 
-.numbers-section {
+.numbers-divs {
     background-color: lightblue;
+    grid-area: 3 / 1 / 7 / 4;
+}
+
+.numbers-divs > .zero {
+    background-color: pink;
+    grid-area: 7 / 1 / 7 / 4;
 }
