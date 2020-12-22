@@ -1,21 +1,32 @@
 .wrapper {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: vh;
 }
+
 sup {font-size:xx-small; vertical-align:super;}
 
-.container {
+.display {
+    display: grid;
+    grid-template-columns: 60px 40px;
+    grid-template-rows: auto;
+}
+
+.calculator-keys {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     height: 600px;
     width: 400px;
 }
 
+/* TODO: Set up the display to have 2 lines of text with a button on the side */
+
+/* 
 .container > div {
-    /* background-color: lavender; */
+    background-color: lavender;
     border: 1px solid #D3D3D3;
 }
 
@@ -42,4 +53,5 @@ sup {font-size:xx-small; vertical-align:super;}
 .numbers-divs > .zero {
     background-color: pink;
     grid-area: 7 / 1 / 7 / 4;
-}
+} 
+*/
