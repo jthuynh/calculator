@@ -1,3 +1,8 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -10,48 +15,28 @@ sup {font-size:xx-small; vertical-align:super;}
 
 .display {
     display: grid;
-    grid-template-columns: 60px 40px;
-    grid-template-rows: auto;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 0.75fr;
+    height: 150px;
+    width: 400px;
 }
 
 .calculator-keys {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    height: 600px;
+    height: 400px;
     width: 400px;
 }
 
-/* TODO: Set up the display to have 2 lines of text with a button on the side */
-
-/* 
-.container > div {
-    background-color: lavender;
-    border: 1px solid #D3D3D3;
+#output-field {
+    grid-area: 1 / 1 / 1 / 3;
 }
 
-.display-area {
-    background-color: orange;
-    grid-area: 1 / 1 / 2 / 5;
+#input-field {
+    grid-area: 2 / 1 / 2 / 2;
 }
 
-.clear-divs {
-    background-color: green;
-    grid-area: 2 / 1 / 2 / 4;
-}
+/* #delete {
 
-.operations-divs {
-    background-color: purple;
-    grid-area: 2 / 4 / 7 / 5;
-}
-
-.numbers-divs {
-    background-color: lightblue;
-    grid-area: 3 / 1 / 7 / 4;
-}
-
-.numbers-divs > .zero {
-    background-color: pink;
-    grid-area: 7 / 1 / 7 / 4;
-} 
-*/
+} */

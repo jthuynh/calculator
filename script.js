@@ -1,4 +1,6 @@
-const container = document.querySelector('.container');
+const container = document.querySelector('.calculator-keys'); 
+let displayVal = "";
+// let inputVal = "";
 
 function operate (operator, first, second) {
     switch(operator) {
@@ -15,6 +17,16 @@ function operate (operator, first, second) {
     }
 }
 
+function showDisplay(val) {
+    const inputField = document.querySelector("#input-field");
+    inputField.innerHTML = val;
+
+    const outputField = document.querySelector("#output-field");
+    outputField.innerHTML = displayVal;
+}
+
+// showDisplay();
+
 function setupDivs () {
     // const display = document.querySelector('.display-area');
     // const clear = document.querySelector('.clear-divs');
@@ -26,4 +38,4 @@ function setupDivs () {
 }
 // TODO: Add factorial and exponent
 
-setupDivs();
+// setupDivs();
