@@ -1,6 +1,15 @@
 const container = document.querySelector('.calculator-keys'); 
+let initCalcVal = false;
 let displayVal = "";
-// let inputVal = "";
+
+function Expression (operator, first, second) {
+    this.operator = operator;
+    this.first = first;
+    this.second = second;
+}
+function factorial (n) {
+    return (n == 0) ? 1 : n * factorial(n - 1);
+}
 
 function operate (operator, first, second) {
     switch(operator) {
@@ -16,34 +25,63 @@ function operate (operator, first, second) {
         case "/":
             (second === 0) ? displayVal = 'Nah. That ain\'t it, chief. Try again!' : displayVal = first / second;
             break;
-        case "factorial":
+        case "!":
+            displayVal = factorial(n);
             break;
-        case "exponent":
+        case "x":
             displayVal = Math.pow(first, second);
             break;
-        default :
-            throw 'Error: no operator selected';
+        default:
+            throw 'Error: operate method failed';
     }
 }
 
 function showNumDisplay(e) {
     const inputField = document.querySelector("#input-field");
-    // inputField.innerHTML = e;
+    if (initCalcVal) {
+        inputField.innerHTML = "";
+        initCalcVal = false;
+    }
     displayVal += e.target.id;
     inputField.innerHTML += e.target.id;
-    // const outputField = document.querySelector("#output-field");
-    // outputField.innerHTML = displayVal;
 }
 
-// showDisplay();
-
+function execOp(e) {
+    switch(e.target.id) {
+        case "AC":
+            displayVal = "";
+            inputField.innerHTML = "0";
+            break;
+        case "exponent":
+            break;
+        case "factorial":
+            break;
+        case "divide":
+            break;
+        case "times":
+            break;
+        case "plus":
+            break;
+        case "minus":
+            break;
+        case "sign":
+            break;
+        case "decimal":
+            break;
+        case "equal":
+            break;
+        default:
+            throw 'Error: execOp failed';
+    }
+}
 function setupDivs () {
+    // let expression = new Expression(null, null, null);
     const numbers = document.querySelectorAll(".digit");
-    console.log(numbers);
     numbers.forEach(number => number.addEventListener('click', showNumDisplay));
+    initCalcVal = true;
 
     const operators = document.querySelectorAll(".operator");
-    console.log(operators);
+    operators.forEach(operator => operator.addEventListener('click', execOp));
 }
 // TODO: Add factorial and exponent
 
