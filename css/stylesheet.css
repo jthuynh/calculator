@@ -39,6 +39,6 @@ sup {font-size:xx-small; vertical-align:super;}
     grid-area: 2 / 1 / 2 / 2;
 }
 
-/* #delete {
-
-} */
+#delete { 
+    grid-area: 2 / 2 / 2 / 3;
+} 

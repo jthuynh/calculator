@@ -5,13 +5,22 @@ let displayVal = "";
 function operate (operator, first, second) {
     switch(operator) {
         case "+":
-            return first + second;
+            displayVal = first + second;
+            break;
         case "-":
-            return first - second;
+            displayVal = first - second;
+            break;
         case "*":
-            return first * second;
+            displayVal = first * second;
+            break;
         case "/":
-            return (second === 0) ? 'Nah. That ain\'t it, chief. Try again!' : first / second;
+            (second === 0) ? displayVal = 'Nah. That ain\'t it, chief. Try again!' : displayVal = first / second;
+            break;
+        case "factorial":
+            break;
+        case "exponent":
+            displayVal = Math.pow(first, second);
+            break;
         default :
             throw 'Error: no operator selected';
     }
@@ -32,6 +41,9 @@ function setupDivs () {
     const numbers = document.querySelectorAll(".digit");
     console.log(numbers);
     numbers.forEach(number => number.addEventListener('click', showNumDisplay));
+
+    const operators = document.querySelectorAll(".operator");
+    console.log(operators);
 }
 // TODO: Add factorial and exponent
 
