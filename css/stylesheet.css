@@ -15,8 +15,10 @@ sup {font-size:xx-small; vertical-align:super;}
 
 .display {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: minmax(0, 3fr) 1fr;
     grid-template-rows: 1fr 0.75fr;
+    word-wrap: break-word;
+    text-align: right;
     height: 150px;
     width: 400px;
 }
