@@ -7,10 +7,6 @@ function factorial (n) {
     return (n == 0) ? 1 : n * factorial(n - 1);
 }
 
-function clearDispVal() {
-    displayVal = "";
-}
-
 function clearExpr() {
     expression.firstVal = null;
     expression.secVal = null;
@@ -18,7 +14,6 @@ function clearExpr() {
 }
 
 function updateDisp(displayVal) {
-    console.log(displayVal.toString());
     const inputField = document.querySelector("#input-field");
     inputField.innerHTML = displayVal.toString();
 }
@@ -35,10 +30,10 @@ function operate (expression) {
             displayVal = expression.firstVal * expression.secVal;
             break;
         case "/":
-            (expression.secVal === 0) ? displayVal = 'Nah. That ain\'t it, chief. Try again!' : displayVal = expression.firstVal / expression.secVal;
+            (expression.secVal == 0) ? displayVal = 'Nah. That ain\'t it, chief. Try again!' : displayVal = expression.firstVal / expression.secVal;
             break;
         case "!":
-            displayVal = factorial(expression.firstVal);
+            displayVal = factorial(Number(expression.firstVal));
             break;
         case "x":
             displayVal = Math.pow(expression.firstVal, expression.secVal);
@@ -54,17 +49,32 @@ function showNumDisplay(e) {
         inputField.innerHTML = "";
         initCalcVal = false;
     }
-    if (displayVal === "0") {
-        clearDispVal();
-    }
+
+    if (displayVal == "0" || inputField.innerHTML == "0") {
+        displayVal = "";
+        updateDisp(displayVal);
+    } 
+    
     displayVal += e.target.id;
-    inputField.innerHTML += e.target.id;
+    updateDisp(displayVal);
+}
+
+function updateOutput() {
+    const outputField = document.querySelector("#output-field");
+    outputField.innerHTML = `${expression.firstVal} ${expression.operation} ${expression.secVal} =`;
 }
 
 function getSecVal(exp) {
     if (exp.firstVal != null && exp.operation != null) {
+        if (displayVal == "") {
+            displayVal = exp.firstVal;
+            expression.operation = exp.operation;
+            return;
+        }
         exp.secVal = Number(displayVal);
+        console.log(exp.secVal);
         operate(exp);
+        updateOutput();
         updateDisp(displayVal);
         expression.operation = null;
     } 
@@ -73,25 +83,19 @@ function getSecVal(exp) {
 function getFirstVal(exp, op) {
     exp.firstVal = Number(displayVal);
     exp.operation = op;
-    clearDispVal();
+    displayVal = "";
 }
 
 function execOp(e) {
-    const inputField = document.querySelector("#input-field");
-    // console.log(e.target.id);
     switch(e.target.id) {
         case "delete":
-            if (displayVal === "") {
-                updateDisp(0);
-            } else {
-                displayVal = displayVal.slice(0,-1);
-                updateDisp(displayVal);
-            }
+            displayVal = displayVal.slice(0,-1);
+            (displayVal.length == 0) ? updateDisp(0) : updateDisp(displayVal);
             break;
 
         case "AC":
-            clearDispVal();
-            inputField.innerHTML = "0";
+            displayVal = "";
+            updateDisp(0);
             clearExpr();
             break;
 
@@ -101,14 +105,21 @@ function execOp(e) {
             break;
 
         case "factorial":
+            if (displayVal == "") { return; }
+
             getFirstVal(expression, "!");
             operate(expression);
+            updateOutput();
+            updateDisp(displayVal);
+            expression.operation = null;
+            displayVal = "";
             break;
 
         case "divide":
             getSecVal(expression);
             getFirstVal(expression, "/");
             break;
+            
         case "times":
             getSecVal(expression);
             getFirstVal(expression, "*");
@@ -130,22 +141,27 @@ function execOp(e) {
             break;
 
         case "decimal":
+            if (!displayVal.includes(".")) {
+                displayVal += ".";
+                updateDisp(displayVal);
+            }
             break;
 
         case "equal":
             if (expression.operation == null) {
-                clearDispVal();
+                displayVal = "";
                 updateDisp(0);
                 clearExpr();
             }
             getSecVal(expression);
-            
+            displayVal = "";
             break;
 
         default:
             throw 'Error: execOp failed';
     }
 }
+
 function setupDivs () {
     const numbers = document.querySelectorAll(".digit");
     numbers.forEach(number => number.addEventListener('click', showNumDisplay));
