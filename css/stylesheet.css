@@ -1,9 +1,12 @@
 body {
+    font-family: 'Montserrat';
     display: flex;
     align-items: center;
     justify-content: center;
     padding-top:30px;
+    background-color: #f6f6f6;
 }
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -43,6 +46,8 @@ sup {font-size:xx-small; vertical-align:super;}
 }
 
 button {
+    font-family: 'Montserrat';
+    font-size: 15px;
     background-color: #f6f6f6;
     border: solid 2px #000000;
     outline: none;
