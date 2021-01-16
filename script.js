@@ -3,9 +3,9 @@ let initCalcVal = false;
 let expression = {firstVal: null, secVal: null, operation: null};
 let displayVal = "";
 
-function factorial (n) {
-    return (n == 0) ? 1 : n * factorial(n - 1);
-}
+// function factorial (n) {
+//     return (n == 0) ? 1 : n * factorial(n - 1);
+// }
 
 function clearExpr() {
     expression.firstVal = null;
@@ -32,9 +32,9 @@ function operate (expression) {
         case "/":
             (expression.secVal == 0) ? displayVal = 'Nah. That ain\'t it, chief. Try again!' : displayVal = expression.firstVal / expression.secVal;
             break;
-        case "!":
-            displayVal = factorial(Number(expression.firstVal));
-            break;
+        // case "!":
+        //     displayVal = factorial(Number(expression.firstVal));
+        //     break;
         case "x":
             displayVal = Math.pow(expression.firstVal, expression.secVal);
             break;
@@ -170,5 +170,5 @@ function setupDivs () {
     const operators = document.querySelectorAll(".operator");
     operators.forEach(operator => operator.addEventListener('click', execOp));
 }
-// TODO: Add factorial and exponent
+
 setupDivs();
