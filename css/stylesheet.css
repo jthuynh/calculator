@@ -4,7 +4,7 @@ body {
     align-items: center;
     justify-content: center;
     padding-top:30px;
-    background-color: #f6f6f6;
+    background-color: #ffffff;
 }
 
 .wrapper {
@@ -14,6 +14,7 @@ body {
     justify-content: center;
     border: solid 2px #000000;
     border-radius: 2%;
+    background-color: #bcbcbc;
     height: 500px;
     width: 390px;
 }
@@ -29,11 +30,10 @@ sup {font-size:xx-small; vertical-align:super;}
     height: 100px;
     width: 350px;
     border: solid 2px #000000;
+    background-color: #ffffff;
     padding: 2px;
     border-radius: 5px;
-    
 }
-
 
 .calculator-keys {
     display: grid;
@@ -53,8 +53,11 @@ button {
     outline: none;
     border-radius: 5%;
 }
- #output-field {
-    
+
+.pressed { 
+    transform: scale(1.5);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600; 
 }
 
 #input-field {
@@ -63,6 +66,10 @@ button {
 .io-fields {
     margin: auto;
     width: 340px;
+}
+
+#AC, #delete {
+    background-color: #ffcccb;
 }
 /* 
 #delete { 

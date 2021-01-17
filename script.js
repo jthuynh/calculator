@@ -72,7 +72,7 @@ function getSecVal(exp) {
             return;
         }
         exp.secVal = Number(displayVal);
-        console.log(exp.secVal);
+        // console.log(exp.secVal);
         operate(exp);
         updateOutput();
         updateDisp(displayVal);
